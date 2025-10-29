@@ -16,7 +16,7 @@ const microfronts = [
 ];
 
 function App() {
-  const [microfront, setMicrofront] = useState("site1");
+  const [microfront, setMicrofront] = useState();
 
   useEffect(() => {
     const microfront = window.location.pathname
@@ -24,6 +24,14 @@ function App() {
       .split("/")[1];
 
     setMicrofront(microfront);
+
+    window.getAuth = () => {
+      const username = localStorage.getItem("username");
+      const roles = localStorage.getItem("roles");
+      const token = localStorage.getItem("token");
+
+      return { username, roles, token };
+    };
   }, []);
 
   function handleUpdateUrl(microfront, pathname) {
