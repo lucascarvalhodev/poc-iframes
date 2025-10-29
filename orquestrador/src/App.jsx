@@ -7,11 +7,11 @@ const basename = "/iframes/mf/orquestrador";
 const microfronts = [
   {
     name: "site1",
-    url: "http://localhost/iframes/mf/site1",
+    url: "/iframes/mf/site1",
   },
   {
     name: "site2",
-    url: "http://localhost/iframes/mf/site2",
+    url: "/iframes/mf/site2",
   },
 ];
 
