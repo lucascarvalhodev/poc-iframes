@@ -9,7 +9,23 @@ function App() {
       <InitRouter />
       <Routes>
         <Route path="/" element={<div>Site 1 - Home</div>} />
-        <Route path="/page1" element={<div>Site 1 - Page 1</div>} />
+        <Route
+          path="/page1"
+          element={
+            <div>
+              <div>Site 1 - Page 1</div>
+              <div>
+                <button
+                  onClick={() => {
+                    console.log(getFirstParent()?.getAuth());
+                  }}
+                >
+                  getAuth
+                </button>
+              </div>
+            </div>
+          }
+        />
         <Route
           path="/page2"
           element={
@@ -43,4 +59,14 @@ function InitRouter() {
   }, []);
 
   return null;
+}
+
+function getFirstParent() {
+  let parent = window.parent;
+
+  while (parent?.parent && parent?.parent !== parent) {
+    parent = parent.parent;
+  }
+
+  return parent;
 }
