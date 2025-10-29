@@ -6,7 +6,7 @@ const basename = "/iframes/mf/site1";
 function App() {
   return (
     <BrowserRouter basename={basename}>
-      <div></div>
+      <InitRouter />
       <Routes>
         <Route path="/" element={<div>Site 1 - Home</div>} />
         <Route path="/page1" element={<div>Site 1 - Page 1</div>} />
@@ -26,7 +26,6 @@ function App() {
 
         <Route path="*" element={<div>404</div>} />
       </Routes>
-      <InitRouter />
     </BrowserRouter>
   );
 }
@@ -39,7 +38,7 @@ function InitRouter() {
   useEffect(() => {
     if (window.self !== window.top) {
       window.parent.navigate = navigate;
-      console.log("InitRouter");
+      navigate(window?.parent?.initialPathname || "/");
     }
   }, []);
 

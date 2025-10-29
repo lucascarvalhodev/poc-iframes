@@ -6,11 +6,9 @@ interface Props {
   pathname: string;
 }
 
-export function IFrame({ name, src: initialSrc, pathname }: Props) {
-  const [src, setSrc] = useState<string>(initialSrc + pathname);
-
+export function IFrame({ name, src, pathname }: Props) {
   useEffect(() => {
-    setSrc(initialSrc + pathname);
+    (window as any).initialPathname = pathname;
   }, [name]);
 
   return (
