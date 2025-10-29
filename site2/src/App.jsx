@@ -1,17 +1,16 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router";
 
-const basename = "/mf/site2";
+const basename = "/iframes/mf/site2";
 
 function App() {
   return (
     <BrowserRouter basename={basename}>
-      <div>Site 2</div>
       <Routes>
-        <Route path="/page1" element={<div>Page 1</div>} />
-        <Route path="/page2" element={<div>Page 2</div>} />
-
-        <Route path="*" element={<div>404</div>} />
+        <Route path="/" element={<div>Site 2 - home</div>} />
+        <Route path="/page1" element={<div>Site 2 - Page 1</div>} />
+        <Route path="/page2" element={<div>Site 2 - Page 2</div>} />
+        <Route path="*" element={<div>Site 2 - 404</div>} />
       </Routes>
       <InitRouter />
     </BrowserRouter>
@@ -25,15 +24,8 @@ function InitRouter() {
 
   useEffect(() => {
     if (window.self !== window.top) {
-      const pathname = (
-        "/mf" +
-        window.parent.location.pathname +
-        window.parent.location.search
-      ).replace(basename, "");
-
-      navigate(pathname);
-
       window.parent.navigate = navigate;
+      console.log("InitRouter");
     }
   }, []);
 

@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/mf/site1",
+  base: "/iframes/mf/site1",
   plugins: [react()],
   server: {
     port: 3002, // aqui tu muda a porta
